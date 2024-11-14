@@ -82,16 +82,5 @@
 		        p=p.next;
 		    }
 		}
-	
- public static void main(String[] args) {
-	    List<String> L = new LinkedList<String>();
-	    L.insert("Omar");
-	    L.insert("A");
-	    L.insert("z");
-	    L.findFirst();
-	     L.remove();
-	    L.display();
-	    
-	}}
-
+	}
 	

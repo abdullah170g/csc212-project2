@@ -1,4 +1,3 @@
-
 public class Index {
 	LinkedList<Document> all_doc;
 
@@ -12,10 +11,10 @@ public class Index {
 
 	public void displayDocument() {
 	    if (all_doc == null) {
-	        System.out.println("null docs");
+	        System.out.println("Null document.");
 	        return;
 	    } else if (all_doc.empty()) {
-	        System.out.println("empty docs");
+	        System.out.println("Empty document.");
 	        return;
 	    }
 	    all_doc.findFirst();

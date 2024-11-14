@@ -1,4 +1,3 @@
-
 public class Document {
 	LinkedList<String> word = new LinkedList<>();
 	int id;

@@ -11,5 +11,5 @@ public interface List<T> {
     void insert(T e);
     void remove();
     ////////////////////
-    void display();
+    void display(); // Extra
 }

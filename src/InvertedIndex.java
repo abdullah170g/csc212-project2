@@ -1,4 +1,3 @@
-
 public class InvertedIndex {
 	LinkedList<Word> inv_index;
 	public InvertedIndex() {
@@ -39,10 +38,10 @@ public class InvertedIndex {
     
     public void display_inv_index() {
         if (inv_index == null) {
-            System.out.println("null inverted_index");
+            System.out.println("Null inverted_index");
             return;
         } else if (inv_index.empty()) {
-            System.out.println("empty inverted_index");
+            System.out.println("Empty inverted_index");
             return;
         }else {
 
