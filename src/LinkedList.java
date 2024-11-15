@@ -78,7 +78,7 @@
 		    Node<T>p=head;
 		    while(p!=null)
 		    {
-		        System.out.print(p.data+" ");
+		        System.out.print(p.data+", ");
 		        p=p.next;
 		    }
 		}

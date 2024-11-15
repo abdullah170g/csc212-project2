@@ -1,5 +1,5 @@
 public class InvertedIndex {
-	LinkedList<Word> inv_index;
+	LinkedList<Word> inv_index; // Used to maintain the insertion ORDER !
 	public InvertedIndex() {
 		inv_index = new LinkedList<Word>();
     }

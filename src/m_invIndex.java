@@ -6,10 +6,12 @@ public class m_invIndex {
 	LinkedList<String> stopWord;
 	Index index1;
 	InvertedIndex inverted;
+	BST<Word> inv_bst; // BST Implementation
 	public m_invIndex () {
 		stopWord = new LinkedList<>();
 		index1 = new Index();
 		inverted = new InvertedIndex();
+		inv_bst = new BST<Word>(); // Initialization
 	}
 	public void Load_stopWords(String fileName) {
 		try {
@@ -29,7 +31,7 @@ public class m_invIndex {
 		try {
 			File f = new File(fileName);
 			Scanner s = new Scanner(f);
-			s.nextLine();
+			s.nextLine(); 
 
 			while (s.hasNextLine()) {
 				line = s.nextLine();
@@ -91,14 +93,46 @@ public class m_invIndex {
 		Load_stopWords(stop_file);
 		Load_all_doc(documents_file);
 	}
-
+	
+	// Easiest way to implement BST
+	public void BST() {
+		inverted.inv_index.findFirst();
+		while(!inverted.inv_index.last()) {
+			Word w = inverted.inv_index.retrieve();
+			inv_bst.insert(w.text, w);
+			inverted.inv_index.findNext();
+		}
+		inv_bst.insert(inverted.inv_index.retrieve().text, inverted.inv_index.retrieve());
+	}
+	
+	//Implementing search by term !!
+	public LinkedList<Integer> search(String content){
+		inv_bst.findkey(content.toLowerCase());
+		Word w = inv_bst.retrieve();
+		if(w != null)
+			return w.doc_id;
+		else
+			return null;
+	}
+	
 	public static void main(String[] args) {
+		Scanner inp = new Scanner(System.in);
 		m_invIndex m = new m_invIndex();
 		m.Load_all_file("C:\\Users\\alz7\\Desktop\\stop.txt", "C:\\Users\\alz7\\Desktop\\dataset.csv");
 
 		m.index1.displayDocument();
 		System.out.println("\n-----------------");
 		m.inverted.display_inv_index();
+		
+		System.out.println("\n-----------------");
+		//Testing the BST
+		m.BST();
+		System.out.print("Please enter the term you want search for: ");
+		String x = inp.next();
+		LinkedList<Integer> docIds = m.search(x);
+		System.out.println("Documents that contain the term: ");
+		docIds.display();
+		inp.close();
 	}
 }
 
