@@ -116,7 +116,7 @@ public class BST<T> {
 //		return insert(key, data);
 //	}
 	
-	
+	// Using in-order display as it is sorted
 	public void display() {
 		displayrec(root);
 	}

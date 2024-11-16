@@ -73,12 +73,15 @@
 		}
 		public void display() {
 		    if(head==null)
-		        System.out.println("empty list");
+		        System.out.println("Empty list.");
 
 		    Node<T>p=head;
 		    while(p!=null)
 		    {
-		        System.out.print(p.data+", ");
+		    	if(p.next == null)
+		    		System.out.print(p.data);
+		    	else
+		    		System.out.print(p.data+",");
 		        p=p.next;
 		    }
 		}

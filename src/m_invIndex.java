@@ -35,8 +35,9 @@ public class m_invIndex {
 
 			while (s.hasNextLine()) {
 				line = s.nextLine();
+				
 				if (line.trim().length() < 3) {
-					System.out.println("Empty line skip this line: " + line);
+					// System.out.println("Empty line skip this line: " + line); NOT REQUIRED
 					break; 
 				}
 
@@ -53,6 +54,7 @@ public class m_invIndex {
 		} catch (Exception e) {
 			System.out.println("Finished loading files...");
 		}
+		BST(); // Creating the BST after reading !!
 	}
 	public LinkedList<String> Linked_List_of_words_in_doc_index_inve_index(String content, int id) {
 		LinkedList<String> word_in_doc = new LinkedList<String>();
@@ -126,7 +128,6 @@ public class m_invIndex {
 		
 		System.out.println("\n-----------------");
 		//Testing the BST
-		m.BST();
 		System.out.print("Please enter the term you want search for: ");
 		String x = inp.next();
 		LinkedList<Integer> docIds = m.search(x);
