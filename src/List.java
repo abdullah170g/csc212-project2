@@ -1,4 +1,3 @@
-
 public interface List<T> {
     boolean empty();
     boolean full();
@@ -11,5 +10,5 @@ public interface List<T> {
     void insert(T e);
     void remove();
     ////////////////////
-    void display(); // Extra
+    void display();
 }
