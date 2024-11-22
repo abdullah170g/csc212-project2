@@ -1,89 +1,110 @@
- class Node<T> {
-	public T data;
-	public Node<T> next;
+class Node<T> {
+    public T data;
+    public Node<T> next;
 
-	public Node () {
-		data = null;
-		next = null;
-	}
+    public Node () {
+        data = null;
+        next = null;
+    }
 
-	public Node (T val) {
-		data = val;
-		next = null;
-	}}
-	public class LinkedList<T> implements List<T>  {
-		private Node<T> head;
-		private Node<T> current;
+    public Node (T val) {
+        data = val;
+        next = null;
+    }
+}
 
-		public LinkedList () {
-			head = current = null; 
-		}
+public class LinkedList<T> implements List<T>  {
+    private Node<T> head;
+    private Node<T> current;
+    int count=0;
 
-		public boolean empty () {
-			return head == null;
-		}
+    public LinkedList () {
+        head = current = null; 
+    }
 
-		public boolean last () {
-			return current.next == null;
-		}
-		public boolean full () {
-			return false;
-		}
-		public void findFirst () {
-			current = head;
-		}
-		public void findNext () {
-			current = current.next;
-		}
-		public T retrieve () {
-			return current.data;
-		}
-		public void update (T val) {
-			current.data = val;
-		}
-		public void insert (T val) {
-			Node<T> tmp;
-			if (empty()) {
-				current = head = new Node<T> (val);
-			}
-			else {
-				tmp = current.next;
-				current.next = new Node<T> (val);
-				current = current.next;
-				current.next = tmp;
-			}
-		}
-		public void remove () {
-			if (current == head) {
-				head = head.next;
-			}
-			else {
-				Node<T> tmp = head;
+    public boolean empty () {
+        return head == null;
+    }
 
-				while (tmp.next != current)
-					tmp = tmp.next;
+    public boolean last () {
+        return current.next == null;
+    }
+    public boolean full () {
+        return false;
+    }
+    public void findFirst () {
+        current = head;
+    }
+    public void findNext () {
+        current = current.next;
+    }
+    public T retrieve () {
+        return current.data;
+    }
+    public void update (T val) {
+        current.data = val;
+    }
+    public void insert (T val) {
+    	count++;
+        Node<T> tmp;
+        if (empty()) {
+            current = head = new Node<T> (val);
+        }
+        else {
+            tmp = current.next;
+            current.next = new Node<T> (val);
+            current = current.next;
+            current.next = tmp;
+        }
+    }
+    public void remove () {
+        if (current == head) {
+            head = head.next;
+        }
+        else {
+            Node<T> tmp = head;
 
-				tmp.next = current.next;
-			}
+            while (tmp.next != current)
+                tmp = tmp.next;
 
-			if (current.next == null)
-				current = head;
-			else
-				current = current.next;
-		}
-		public void display() {
-		    if(head==null)
-		        System.out.println("Empty list.");
+            tmp.next = current.next;
+        }
 
-		    Node<T>p=head;
-		    while(p!=null)
-		    {
-		    	if(p.next == null)
-		    		System.out.print(p.data);
-		    	else
-		    		System.out.print(p.data+",");
-		        p=p.next;
-		    }
-		}
-	}
-	
+        if (current.next == null)
+            current = head;
+        else
+            current = current.next;
+    }
+    public boolean search(T x) {
+        Node<T> p = head;
+        while (p != null) {
+            if (p.data.equals(x)) {
+                return true;
+            }
+            p = p.next;
+        }
+        return false;
+    }
+
+    public void display() {
+        if(head==null)
+            System.out.println("empty list");
+
+        Node<T> p = head;
+        while(p!=null)
+        {
+            System.out.print(p.data+" ");
+            p=p.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        List<String> L = new LinkedList<String>();
+        L.insert("Omar");
+        L.insert("A");
+        L.insert("z");
+        L.findFirst();
+        L.remove();
+        L.display();
+    }
+}
